@@ -5,9 +5,10 @@ interface RevealProps {
   className?: string
   delay?: number
   as?: ElementType
+  [key: string]: unknown
 }
 
-export default function Reveal({ children, className = '', delay = 0, as: Tag = 'div' }: RevealProps) {
+export default function Reveal({ children, className = '', delay = 0, as: Tag = 'div', ...rest }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null)
   const [visible, setVisible] = useState(false)
 
@@ -39,6 +40,7 @@ export default function Reveal({ children, className = '', delay = 0, as: Tag = 
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
       className={`reveal ${visible ? 'reveal-visible' : ''} ${className}`}
+      {...rest}
     >
       {children}
     </Tag>

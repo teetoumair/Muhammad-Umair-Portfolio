@@ -1,4 +1,5 @@
-import { GitHubIcon, LinkedInIcon } from '../ui/icons'
+import { GitHubIcon, LinkedInIcon, MailIcon } from '../ui/icons'
+import { EMAIL, GITHUB_URL, LINKEDIN_URL } from '../sections/contact-info'
 
 export default function Footer() {
   return (
@@ -7,7 +8,14 @@ export default function Footer() {
         <p className="text-sm text-soft">© {new Date().getFullYear()} Muhammad Umair — Lahore, Pakistan</p>
         <div className="flex items-center gap-5">
           <a
-            href="https://github.com/teetoumair"
+            href={`mailto:${EMAIL}`}
+            aria-label={`Email ${EMAIL}`}
+            className="text-soft transition-colors hover:text-ink"
+          >
+            <MailIcon className="h-5 w-5" />
+          </a>
+          <a
+            href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub profile"
@@ -16,7 +24,7 @@ export default function Footer() {
             <GitHubIcon className="h-5 w-5" />
           </a>
           <a
-            href="https://www.linkedin.com/in/mohammad-umair-um/"
+            href={LINKEDIN_URL}
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn profile"

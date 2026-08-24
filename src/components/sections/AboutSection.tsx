@@ -25,7 +25,7 @@ export default function AboutSection() {
         </Reveal>
         <div className="md:col-span-8 md:pl-6">
           <Reveal>
-            <p className="label-mono mb-3 text-muted">03 · About</p>
+            <p className="label-mono mb-3 text-muted">04 · About</p>
             <h2 className="text-heading max-w-xl mb-8">
               A student who treats every project like it ships to real users.
             </h2>
@@ -52,9 +52,9 @@ export default function AboutSection() {
           <Reveal delay={360}>
             <dl className="mt-10 grid max-w-xl grid-cols-1 gap-x-10 sm:grid-cols-2">
               {facts.map((fact) => (
-                <div key={fact.label} className="flex justify-between border-b border-line py-4 gap-4">
+                <div key={fact.label} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line py-4">
                   <dt className="label-mono shrink-0 pt-1 text-muted">{fact.label}</dt>
-                  <dd className="text-right text-sm font-medium">{fact.value}</dd>
+                  <dd className="text-sm font-medium sm:text-right">{fact.value}</dd>
                 </div>
               ))}
             </dl>

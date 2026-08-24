@@ -21,7 +21,7 @@ export default function SkillsSection() {
     <section id="skills" className="border-t border-line py-20 sm:py-28">
       <div className="shell">
         <Reveal>
-          <p className="label-mono mb-3 text-muted">02 · Toolkit</p>
+          <p className="label-mono mb-3 text-muted">03 · Toolkit</p>
           <h2 className="text-heading max-w-lg mb-14">
             Honest about what I know, and what I&apos;m still learning.
           </h2>
@@ -36,10 +36,10 @@ export default function SkillsSection() {
                   key={skill}
                   as="li"
                   delay={index * 70}
-                  className="flex items-center justify-between border-b border-line py-4 font-display text-lg font-semibold first:border-t"
+                  className="flex items-center justify-between gap-3 border-b border-line py-4 font-display text-lg font-semibold first:border-t"
                 >
-                  {skill}
-                  <span className="label-mono text-muted">Core</span>
+                  <span className="min-w-0">{skill}</span>
+                  <span className="label-mono shrink-0 text-muted">Core</span>
                 </Reveal>
               ))}
             </ul>
@@ -52,10 +52,10 @@ export default function SkillsSection() {
                   key={skill}
                   as="li"
                   delay={index * 70}
-                  className="flex items-center justify-between border-b border-line py-4 font-display text-lg font-semibold text-soft first:border-t"
+                  className="flex items-center justify-between gap-3 border-b border-line py-4 font-display text-lg font-semibold text-soft first:border-t"
                 >
-                  {skill}
-                  <span className="label-mono text-muted">Growing</span>
+                  <span className="min-w-0">{skill}</span>
+                  <span className="label-mono shrink-0 text-muted">Growing</span>
                 </Reveal>
               ))}
             </ul>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { CloseIcon, MenuIcon } from '../ui/icons'
 
 const links = [
+  { href: '#live', label: 'Live sites' },
   { href: '#work', label: 'Work' },
   { href: '#skills', label: 'Skills' },
   { href: '#about', label: 'About' },
@@ -80,6 +81,14 @@ export default function TopNavBar() {
             className="btn-solid mt-4 mb-2"
           >
             Say hello
+          </a>
+          <a
+            href="/resume.pdf"
+            download
+            onClick={() => setMenuOpen(false)}
+            className="label-mono mt-2 mb-3 flex items-center justify-center gap-2 text-muted transition-colors hover:text-ink"
+          >
+            Download résumé ↓
           </a>
         </div>
       </div>

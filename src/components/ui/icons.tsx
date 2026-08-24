@@ -27,6 +27,42 @@ export function ArrowUpRightIcon({ className = 'h-4 w-4' }: IconProps) {
   )
 }
 
+export function MailIcon({ className = 'h-4 w-4' }: IconProps) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2" y="4" width="20" height="16" rx="3" />
+      <path d="m3 7 8.2 5.7a1.4 1.4 0 0 0 1.6 0L21 7" />
+    </svg>
+  )
+}
+
+export function DownloadIcon({ className = 'h-4 w-4' }: IconProps) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M12 3v12" />
+      <path d="m6.5 10.5 5.5 5.5 5.5-5.5" />
+      <path d="M4 21h16" />
+    </svg>
+  )
+}
+
+export function CopyIcon({ className = 'h-4 w-4' }: IconProps) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="9" y="9" width="12" height="12" rx="2.5" />
+      <path d="M5 15H4.5A2.5 2.5 0 0 1 2 12.5v-8A2.5 2.5 0 0 1 4.5 2h8A2.5 2.5 0 0 1 15 4.5V5" />
+    </svg>
+  )
+}
+
+export function CheckIcon({ className = 'h-4 w-4' }: IconProps) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="m4 12.5 5.5 5.5L20 6.5" />
+    </svg>
+  )
+}
+
 export function MenuIcon({ className = 'h-6 w-6' }: IconProps) {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className={className}>
