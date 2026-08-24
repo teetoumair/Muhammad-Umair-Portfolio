@@ -1,4 +1,6 @@
 import Reveal from '../ui/Reveal'
+import ChapterKicker from '../ui/ChapterKicker'
+import MaskWords from '../ui/MaskWords'
 import profileImg from '../../assets/profile.jpg'
 
 const facts = [
@@ -24,14 +26,12 @@ export default function AboutSection() {
           </div>
         </Reveal>
         <div className="md:col-span-8 md:pl-6">
-          <Reveal>
-            <p className="label-mono mb-3 text-muted">04 · About</p>
-            <h2 className="text-heading max-w-xl mb-8">
-              A student who treats every project like it ships to real users.
-            </h2>
-          </Reveal>
+          <ChapterKicker num="04" title="About" className="mb-4" />
+          <h2 className="text-heading mb-8 max-w-xl">
+            <MaskWords text="A student who treats every project like it ships to real users." baseDelay={150} />
+          </h2>
           <div className="max-w-xl space-y-5 leading-relaxed text-soft">
-            <Reveal as="p" delay={80}>
+            <Reveal as="p" delay={80} className="story-first">
               I&apos;m a Computer Science bachelor&apos;s student with a simple loop I
               keep running: learn something, build something real with it, then figure
               out why it broke. That loop has taken me across two platforms I genuinely

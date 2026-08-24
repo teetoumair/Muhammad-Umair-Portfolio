@@ -1,5 +1,7 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, type CSSProperties } from 'react'
 import Reveal from '../ui/Reveal'
+import ChapterKicker from '../ui/ChapterKicker'
+import MaskWords from '../ui/MaskWords'
 import {
   ArrowUpRightIcon,
   CheckIcon,
@@ -37,13 +39,15 @@ export default function ContactSection() {
         }}
       />
       <div className="shell relative">
-        <Reveal>
-          <p className="label-mono mb-3 text-paper/50">05 · Contact</p>
-          <h2 className="text-display-sm max-w-3xl mb-6">
-            Have an idea, an internship, or a junior role?{' '}
-            <em className="text-accent font-semibold italic">Let&apos;s talk.</em>
-          </h2>
-        </Reveal>
+        <ChapterKicker num="05" title="Contact" dark className="mb-4" />
+        <h2 className="text-display-sm mb-6 max-w-3xl">
+          <MaskWords
+            text="Have an idea, an internship, or a junior role? Let's talk."
+            accents={["Let's", 'talk.']}
+            baseDelay={150}
+            step={45}
+          />
+        </h2>
         <Reveal delay={120}>
           <p className="max-w-xl text-lede text-paper/70 mb-10">
             My inbox is always open — whether you want to talk code, collaboration,
@@ -114,6 +118,25 @@ export default function ContactSection() {
             </p>
           </div>
         </Reveal>
+      </div>
+      <div aria-hidden="true" className="marquee mt-20">
+        <div
+          className="marquee-track items-center gap-10 sm:gap-14"
+          style={{ '--marquee-duration': '52s' } as CSSProperties}
+        >
+          {[0, 1].map((half) => (
+            <div key={half} className="flex shrink-0 items-center gap-10 sm:gap-14">
+              {['Open to work', "Let's talk", 'Open to work', "Let's talk"].map((phrase, i) => (
+                <span key={i} className="flex items-center gap-10 sm:gap-14">
+                  <span className="text-outline whitespace-nowrap font-display text-5xl font-bold uppercase tracking-tight sm:text-7xl">
+                    {phrase}
+                  </span>
+                  <span className="h-2 w-2 shrink-0 rounded-full bg-accent" />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

@@ -1,15 +1,47 @@
+import { useEffect, useRef } from 'react'
 import { ArrowUpRightIcon, DownloadIcon, MailIcon } from '../ui/icons'
+import MaskWords from '../ui/MaskWords'
+import CountUp from '../ui/CountUp'
 import heroImg from '../../assets/hero.webp'
 import { EMAIL } from './contact-info'
 
 const stats = [
-  { value: '4', label: 'Live production sites' },
-  { value: '2', label: 'Platforms shipped on' },
-  { value: '6', label: 'Tools used every day' },
-  { value: '24h', label: 'Typical reply time' },
+  { to: 4, suffix: '', label: 'Live production sites' },
+  { to: 2, suffix: '', label: 'Platforms shipped on' },
+  { to: 6, suffix: '', label: 'Tools used every day' },
+  { to: 24, suffix: 'h', label: 'Typical reply time' },
 ]
 
 export default function HeroSection() {
+  const parallaxRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = parallaxRef.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let raf = 0
+    const update = () => {
+      const rect = el.getBoundingClientRect()
+      const viewportHeight = window.innerHeight
+      const progress = (rect.top + rect.height / 2 - viewportHeight / 2) / viewportHeight
+      const y = Math.max(-24, Math.min(24, progress * -36))
+      el.style.transform = `translateY(${y}px)`
+    }
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
   return (
     <section id="top" className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-20">
       <div className="shell grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
@@ -24,10 +56,13 @@ export default function HeroSection() {
             </span>
             Lahore, Pakistan — Open to internships &amp; junior roles
           </p>
-          <h1 className="animate-rise max-w-4xl text-display" style={{ animationDelay: '120ms' }}>
-            I build products for the{' '}
-            <em className="font-display font-semibold text-accent italic">web</em> and{' '}
-            <em className="font-display font-semibold text-accent italic">iOS</em>.
+          <h1 className="max-w-4xl text-display">
+            <MaskWords
+              text="I build products for the web and iOS."
+              accents={['web', 'iOS']}
+              baseDelay={150}
+              step={70}
+            />
           </h1>
           <p className="animate-rise mt-8 max-w-xl text-lede text-soft" style={{ animationDelay: '260ms' }}>
             I&apos;m Muhammad Umair — a Computer Science undergraduate who designs and
@@ -35,9 +70,9 @@ export default function HeroSection() {
             My work includes four live production sites for Nextek Sol (Inc).
           </p>
           <div className="animate-rise mt-10 flex flex-wrap items-center gap-3" style={{ animationDelay: '420ms' }}>
-            <a href="#work" className="btn-solid">
+            <a href="#work" className="btn-solid group">
               View projects
-              <ArrowUpRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
             <a href={`mailto:${EMAIL}`} className="btn-outline">
               <MailIcon className="h-4 w-4" />
@@ -59,19 +94,21 @@ export default function HeroSection() {
                 'radial-gradient(closest-side, rgba(43, 65, 232, 0.12), rgba(43, 65, 232, 0.04) 60%, transparent)',
             }}
           />
-          <img
-            src={heroImg}
-            alt="Portrait of Muhammad Umair"
-            width={851}
-            height={960}
-            decoding="async"
-            className="animate-rise relative h-auto w-[72%] max-w-[22rem] object-contain sm:w-[52%] md:max-w-[24rem] lg:w-full lg:max-w-[30rem]"
-            style={{
-              animationDelay: '340ms',
-              animationDuration: '1.1s',
-              filter: 'drop-shadow(0 10px 14px rgba(22, 22, 26, 0.12)) drop-shadow(0 30px 50px rgba(22, 22, 26, 0.16))',
-            }}
-          />
+          <div ref={parallaxRef} className="relative will-change-transform">
+            <img
+              src={heroImg}
+              alt="Portrait of Muhammad Umair"
+              width={851}
+              height={960}
+              decoding="async"
+              className="animate-rise h-auto w-[72%] max-w-[22rem] object-contain sm:w-[52%] md:max-w-[24rem] lg:w-full lg:max-w-[30rem]"
+              style={{
+                animationDelay: '340ms',
+                animationDuration: '1.1s',
+                filter: 'drop-shadow(0 10px 14px rgba(22, 22, 26, 0.12)) drop-shadow(0 30px 50px rgba(22, 22, 26, 0.16))',
+              }}
+            />
+          </div>
         </div>
       </div>
       <div
@@ -84,7 +121,9 @@ export default function HeroSection() {
           {stats.map((stat) => (
             <div key={stat.label}>
               <dt className="label-mono order-2 mt-1.5 text-muted">{stat.label}</dt>
-              <dd className="font-display text-3xl font-bold tracking-tight sm:text-4xl">{stat.value}</dd>
+              <dd className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+                <CountUp to={stat.to} suffix={stat.suffix} />
+              </dd>
             </div>
           ))}
         </dl>

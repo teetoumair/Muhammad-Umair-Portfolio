@@ -1,4 +1,6 @@
 import Reveal from '../ui/Reveal'
+import ChapterKicker from '../ui/ChapterKicker'
+import MaskWords from '../ui/MaskWords'
 import { ArrowUpRightIcon, GitHubIcon } from '../ui/icons'
 
 const projects = [
@@ -48,14 +50,15 @@ function BrowserChrome({ url, wide = false }: { url: string; wide?: boolean }) {
   return (
     <div className="flex items-center gap-2 border-b border-ink/8 bg-white/80 px-3 py-2">
       <span className="flex shrink-0 gap-1">
-        <i className="block h-2 w-2 rounded-full bg-red-400/70" />
-        <i className="block h-2 w-2 rounded-full bg-amber-400/70" />
-        <i className="block h-2 w-2 rounded-full bg-emerald-400/70" />
+        <i className="pop-dot block h-2 w-2 rounded-full bg-red-400/70" style={{ transitionDelay: '200ms' }} />
+        <i className="pop-dot block h-2 w-2 rounded-full bg-amber-400/70" style={{ transitionDelay: '280ms' }} />
+        <i className="pop-dot block h-2 w-2 rounded-full bg-emerald-400/70" style={{ transitionDelay: '360ms' }} />
       </span>
       <span
-        className={`label-mono min-w-0 truncate rounded-md bg-paper px-2 py-0.5 text-[9px] text-muted ${
+        className={`label-mono fade-up min-w-0 truncate rounded-md bg-paper px-2 py-0.5 text-[9px] text-muted ${
           wide ? 'max-w-[55%]' : 'max-w-[50%]'
         }`}
+        style={{ transitionDelay: '420ms' }}
       >
         {url}
       </span>
@@ -69,20 +72,30 @@ function PortfolioPreview() {
       <BrowserChrome url="umair.dev" wide />
       <div className="grid flex-1 grid-cols-3 gap-3 p-4 sm:p-6">
         <div className="col-span-2 flex flex-col justify-center gap-2.5">
-          <Bar className="w-11/12" />
-          <Bar className="w-3/4" />
-          <Bar className="w-2/5 bg-accent/40" />
-          <span className="mt-2 h-6 w-20 rounded-full bg-ink/85 sm:h-7 sm:w-24" />
+          <div className="draw-bar w-11/12"><Bar className="w-full" /></div>
+          <div className="draw-bar w-3/4" style={{ transitionDelay: '120ms' }}><Bar className="w-full" /></div>
+          <div className="draw-bar w-2/5" style={{ transitionDelay: '240ms' }}><Bar className="w-full bg-accent/40" /></div>
+          <span
+            className="pop-dot mt-2 block h-6 w-20 rounded-full bg-ink/85 sm:h-7 sm:w-24"
+            style={{ transitionDelay: '380ms' }}
+          />
         </div>
         <div className="flex items-start justify-end">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/15 sm:h-20 sm:w-20">
+          <div
+            className="pop-dot flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/15 sm:h-20 sm:w-20"
+            style={{ transitionDelay: '420ms' }}
+          >
             <div className="h-7 w-7 rounded-xl bg-accent/40 sm:h-10 sm:w-10" />
           </div>
         </div>
       </div>
       <div className="grid grid-cols-3 gap-3 px-4 pb-4 sm:px-6 sm:pb-6">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="space-y-2 rounded-lg border border-ink/8 bg-surface p-3">
+          <div
+            key={i}
+            className="fade-up space-y-2 rounded-lg border border-ink/8 bg-surface p-3"
+            style={{ transitionDelay: `${480 + i * 110}ms` }}
+          >
             <Bar className="w-2/3" />
             <div className="h-1 rounded-full bg-ink/8" />
             <div className="h-1 w-4/5 rounded-full bg-ink/8" />
@@ -184,13 +197,17 @@ export default function ProjectsSection() {
   return (
     <section id="work" className="py-20 sm:py-28">
       <div className="shell">
-        <Reveal className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <div className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <p className="label-mono mb-3 text-muted">02 · Selected work</p>
-            <h2 className="text-heading max-w-lg">Things I&apos;ve built, and things I&apos;m building.</h2>
+            <ChapterKicker num="02" title="Selected work" className="mb-4" />
+            <h2 className="text-heading max-w-xl">
+              <MaskWords text="Things I've built, and things I'm building." baseDelay={150} />
+            </h2>
           </div>
-          <p className="text-sm text-soft">More shipping soon.</p>
-        </Reveal>
+          <Reveal delay={250}>
+            <p className="text-sm text-soft">More shipping soon.</p>
+          </Reveal>
+        </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {projects.map((project, index) => (

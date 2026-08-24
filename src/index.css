@@ -59,11 +59,11 @@
   }
 
   .btn-solid {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 font-medium text-paper transition-colors duration-200 hover:bg-accent;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 font-medium text-paper transition duration-200 hover:-translate-y-0.5 hover:bg-accent active:translate-y-0;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-transparent px-6 py-3 font-medium text-ink transition-colors duration-200 hover:border-ink;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-transparent px-6 py-3 font-medium text-ink transition duration-200 hover:-translate-y-0.5 hover:border-ink active:translate-y-0;
   }
 
   .tag {
@@ -71,11 +71,11 @@
   }
 
   .btn-accent {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-accent-strong;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 font-medium text-white transition duration-200 hover:-translate-y-0.5 hover:bg-accent-strong active:translate-y-0;
   }
 
   .btn-light {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-transparent px-6 py-3 font-medium text-paper transition-colors duration-200 hover:border-white/60;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-transparent px-6 py-3 font-medium text-paper transition duration-200 hover:-translate-y-0.5 hover:border-white/60 active:translate-y-0;
   }
 
   .card-lift {
@@ -117,6 +117,100 @@
 
 .animate-rise {
   animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mask-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.mask-word > span {
+  display: inline-block;
+  transform: translateY(115%);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mask-word > span.is-shown {
+  transform: none;
+}
+
+.draw-bar {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pop-dot {
+  transform: scale(0);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rise-inner {
+  transform: translateY(120%);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-visible .draw-bar,
+.is-inview .draw-bar {
+  transform: none;
+}
+
+.reveal-visible .pop-dot,
+.is-inview .pop-dot {
+  transform: none;
+}
+
+.reveal-visible .fade-up,
+.is-inview .fade-up {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-visible .rise-inner,
+.is-inview .rise-inner {
+  transform: none;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(250, 250, 248, 0.16);
+}
+
+.story-first::first-letter {
+  font-family: var(--font-display);
+  font-weight: 700;
+  float: left;
+  font-size: 3em;
+  line-height: 0.82;
+  padding-right: 0.12em;
+  padding-top: 0.05em;
 }
 
 @media (prefers-reduced-motion: reduce) {

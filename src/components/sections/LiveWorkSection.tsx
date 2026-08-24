@@ -1,4 +1,6 @@
 import Reveal from '../ui/Reveal'
+import ChapterKicker from '../ui/ChapterKicker'
+import MaskWords from '../ui/MaskWords'
 import { ArrowUpRightIcon } from '../ui/icons'
 
 const teamSites = [
@@ -39,26 +41,33 @@ function MiniSiteMockup({ initial }: { initial: string }) {
     <div className="overflow-hidden rounded-xl border border-line bg-surface shadow-sm">
       <div className="flex items-center gap-2 border-b border-ink/8 bg-white/80 px-3 py-2">
         <span className="flex gap-1">
-          <i className="block h-2 w-2 rounded-full bg-red-400/70" />
-          <i className="block h-2 w-2 rounded-full bg-amber-400/70" />
-          <i className="block h-2 w-2 rounded-full bg-emerald-400/70" />
+          <i className="pop-dot block h-2 w-2 rounded-full bg-red-400/70" style={{ transitionDelay: '200ms' }} />
+          <i className="pop-dot block h-2 w-2 rounded-full bg-amber-400/70" style={{ transitionDelay: '280ms' }} />
+          <i className="pop-dot block h-2 w-2 rounded-full bg-emerald-400/70" style={{ transitionDelay: '360ms' }} />
         </span>
-        <div className="h-1.5 flex-1 rounded-full bg-ink/8" />
+        <div className="draw-bar h-1.5 flex-1 rounded-full bg-ink/8" style={{ transitionDelay: '420ms' }} />
       </div>
       <div className="bg-accent-soft p-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent font-display text-sm font-bold text-white">
+          <div
+            className="pop-dot flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent font-display text-sm font-bold text-white"
+            style={{ transitionDelay: '480ms' }}
+          >
             {initial}
           </div>
           <div className="flex-1 space-y-1.5">
-            <div className="h-2 w-2/3 rounded-full bg-ink/25" />
-            <div className="h-1.5 w-1/2 rounded-full bg-ink/12" />
+            <div className="draw-bar h-2 w-2/3 rounded-full bg-ink/25" style={{ transitionDelay: '520ms' }} />
+            <div className="draw-bar h-1.5 w-1/2 rounded-full bg-ink/12" style={{ transitionDelay: '600ms' }} />
           </div>
         </div>
       </div>
       <div className="grid grid-cols-3 gap-2 p-4">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="space-y-1.5 rounded-lg border border-ink/8 p-2">
+          <div
+            key={i}
+            className="fade-up space-y-1.5 rounded-lg border border-ink/8 p-2"
+            style={{ transitionDelay: `${640 + i * 110}ms` }}
+          >
             <div className="h-1.5 w-3/4 rounded-full bg-ink/15" />
             <div className="h-1 w-full rounded-full bg-ink/8" />
             <div className="h-1 w-2/3 rounded-full bg-ink/8" />
@@ -74,11 +83,14 @@ function CompanyMockup() {
     <div className="relative overflow-hidden rounded-xl border border-line bg-surface shadow-sm">
       <div className="flex items-center gap-2 border-b border-ink/8 bg-white/80 px-3 py-2">
         <span className="flex gap-1">
-          <i className="block h-2 w-2 rounded-full bg-red-400/70" />
-          <i className="block h-2 w-2 rounded-full bg-amber-400/70" />
-          <i className="block h-2 w-2 rounded-full bg-emerald-400/70" />
+          <i className="pop-dot block h-2 w-2 rounded-full bg-red-400/70" style={{ transitionDelay: '200ms' }} />
+          <i className="pop-dot block h-2 w-2 rounded-full bg-amber-400/70" style={{ transitionDelay: '280ms' }} />
+          <i className="pop-dot block h-2 w-2 rounded-full bg-emerald-400/70" style={{ transitionDelay: '360ms' }} />
         </span>
-        <span className="label-mono truncate rounded-md bg-paper px-2 py-0.5 text-[9px] text-muted">
+        <span
+          className="fade-up label-mono truncate rounded-md bg-paper px-2 py-0.5 text-[9px] text-muted"
+          style={{ transitionDelay: '420ms' }}
+        >
           nexteksol.com
         </span>
       </div>
@@ -97,19 +109,33 @@ function CompanyMockup() {
         />
         <div className="relative flex items-end justify-between gap-4">
           <div className="space-y-2.5 sm:space-y-3.5">
-            <p className="label-mono text-[9px] text-white/50">Nextek Sol (Inc)</p>
-            <p className="font-display text-lg leading-tight font-bold tracking-tight text-white sm:text-2xl">
-              Architecting Absolute Performance
+            <p className="label-mono fade-up text-[9px] text-white/50" style={{ transitionDelay: '450ms' }}>
+              Nextek Sol (Inc)
             </p>
-            <div className="h-1.5 w-24 rounded-full bg-accent sm:w-32" />
+            <div className="overflow-hidden">
+              <p
+                className="rise-inner font-display text-lg leading-tight font-bold tracking-tight text-white sm:text-2xl"
+                style={{ transitionDelay: '520ms' }}
+              >
+                Architecting Absolute Performance
+              </p>
+            </div>
+            <div className="draw-bar h-1.5 w-24 rounded-full bg-accent sm:w-32" style={{ transitionDelay: '700ms' }} />
           </div>
-          <span className="hidden shrink-0 items-center rounded-full bg-accent px-4 py-2 text-xs font-medium text-white sm:inline-flex">
+          <span
+            className="pop-dot hidden shrink-0 items-center rounded-full bg-accent px-4 py-2 text-xs font-medium text-white sm:inline-flex"
+            style={{ transitionDelay: '780ms' }}
+          >
             Get started
           </span>
         </div>
         <div className="relative mt-6 grid grid-cols-3 gap-2.5 sm:mt-8">
           {[0, 1, 2].map((i) => (
-            <div key={i} className="space-y-1.5 rounded-lg border border-white/10 bg-white/5 p-2.5 backdrop-blur-sm">
+            <div
+              key={i}
+              className="fade-up space-y-1.5 rounded-lg border border-white/10 bg-white/5 p-2.5 backdrop-blur-sm"
+              style={{ transitionDelay: `${820 + i * 120}ms` }}
+            >
               <div className="h-1.5 w-2/3 rounded-full bg-white/40" />
               <div className="h-1 w-full rounded-full bg-white/15" />
               <div className="h-1 w-1/2 rounded-full bg-white/15" />
@@ -125,15 +151,19 @@ export default function LiveWorkSection() {
   return (
     <section id="live" className="border-t border-line py-20 sm:py-28">
       <div className="shell">
-        <Reveal className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <div className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <p className="label-mono mb-3 text-muted">01 · Live in production</p>
-            <h2 className="text-heading max-w-lg">Real sites, deployed and serving real users.</h2>
+            <ChapterKicker num="01" title="Live in production" className="mb-4" />
+            <h2 className="text-heading max-w-xl">
+              <MaskWords text="Real sites, deployed and serving real users." baseDelay={150} />
+            </h2>
           </div>
-          <p className="max-w-xs text-sm leading-relaxed text-soft">
-            Designed and built by me for Nextek Sol (Inc) — every link opens the live site.
-          </p>
-        </Reveal>
+          <Reveal delay={250}>
+            <p className="max-w-xs text-sm leading-relaxed text-soft sm:text-right">
+              Designed and built by me for Nextek Sol (Inc) — every link opens the live site.
+            </p>
+          </Reveal>
+        </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <Reveal as="a" href="https://nexteksol.com" target="_blank" rel="noreferrer" delay={0}

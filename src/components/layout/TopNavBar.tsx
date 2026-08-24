@@ -11,6 +11,7 @@ const links = [
 
 export default function TopNavBar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [navHidden, setNavHidden] = useState(false)
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -19,9 +20,34 @@ export default function TopNavBar() {
     }
   }, [menuOpen])
 
+  useEffect(() => {
+    let lastY = window.scrollY
+    let raf = 0
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => {
+        const y = window.scrollY
+        if (!menuOpen) {
+          if (y > lastY && y > 160) setNavHidden(true)
+          else if (y < lastY - 4 || y < 160) setNavHidden(false)
+        }
+        lastY = y
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [menuOpen])
+
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-md">
+      <header
+        className={`fixed inset-x-0 top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-md transition-transform duration-300 ease-out ${
+          navHidden && !menuOpen ? '-translate-y-full' : 'translate-y-0'
+        }`}
+      >
         <nav className="shell flex h-16 items-center justify-between" aria-label="Main">
           <a href="#top" className="font-display text-lg font-bold tracking-tight">
             Muhammad Umair

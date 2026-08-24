@@ -1,4 +1,6 @@
 import Reveal from '../ui/Reveal'
+import ChapterKicker from '../ui/ChapterKicker'
+import MaskWords from '../ui/MaskWords'
 
 const dailyDrivers = [
   'TypeScript & JavaScript',
@@ -20,12 +22,12 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="border-t border-line py-20 sm:py-28">
       <div className="shell">
-        <Reveal>
-          <p className="label-mono mb-3 text-muted">03 · Toolkit</p>
-          <h2 className="text-heading max-w-lg mb-14">
-            Honest about what I know, and what I&apos;m still learning.
+        <div className="mb-14">
+          <ChapterKicker num="03" title="Toolkit" className="mb-4" />
+          <h2 className="text-heading max-w-xl">
+            <MaskWords text="Honest about what I know, and what I'm still learning." baseDelay={150} />
           </h2>
-        </Reveal>
+        </div>
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-8">
           <div>
@@ -36,10 +38,10 @@ export default function SkillsSection() {
                   key={skill}
                   as="li"
                   delay={index * 70}
-                  className="flex items-center justify-between gap-3 border-b border-line py-4 font-display text-lg font-semibold first:border-t"
+                  className="group flex items-center justify-between gap-3 border-b border-line py-4 font-display text-lg font-semibold transition-colors first:border-t hover:border-ink"
                 >
-                  <span className="min-w-0">{skill}</span>
-                  <span className="label-mono shrink-0 text-muted">Core</span>
+                  <span className="min-w-0 transition-transform duration-300 ease-out group-hover:translate-x-1.5">{skill}</span>
+                  <span className="label-mono shrink-0 text-muted transition-colors group-hover:text-accent">Core</span>
                 </Reveal>
               ))}
             </ul>
@@ -52,10 +54,10 @@ export default function SkillsSection() {
                   key={skill}
                   as="li"
                   delay={index * 70}
-                  className="flex items-center justify-between gap-3 border-b border-line py-4 font-display text-lg font-semibold text-soft first:border-t"
+                  className="group flex items-center justify-between gap-3 border-b border-line py-4 font-display text-lg font-semibold text-soft transition-colors first:border-t hover:border-ink"
                 >
-                  <span className="min-w-0">{skill}</span>
-                  <span className="label-mono shrink-0 text-muted">Growing</span>
+                  <span className="min-w-0 transition-transform duration-300 ease-out group-hover:translate-x-1.5">{skill}</span>
+                  <span className="label-mono shrink-0 text-muted transition-colors group-hover:text-accent">Growing</span>
                 </Reveal>
               ))}
             </ul>
