@@ -41,7 +41,7 @@ export default function HeroSection() {
           </div>
         </div>
         <div className="flex justify-center lg:justify-end">
-          <div className="glass-card p-stack-lg rounded-xl beveled-edge shadow-2xl max-w-[280px] transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl bg-white/10 border border-white/20">
+          <div className="p-stack-lg rounded-xl shadow-2xl max-w-[280px] transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl bg-white/10 border border-white/20">
             <div className="flex flex-col items-center text-center gap-stack-sm">
               <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-base">
                 <span className="material-symbols-outlined text-4xl text-white">

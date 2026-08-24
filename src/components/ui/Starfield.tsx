@@ -18,7 +18,12 @@ interface StarfieldOptions {
 
 export default function Starfield({
   canvasId,
-  options = {},
+  options: {
+    count = 200,
+    baseSpeed = 0.1,
+    reactiveRadius = 150,
+    reactiveStrength = 0.5,
+  } = {},
 }: {
   canvasId: string
   options?: StarfieldOptions
@@ -34,13 +39,7 @@ export default function Starfield({
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const config = {
-      count: 200,
-      baseSpeed: 0.1,
-      reactiveRadius: 150,
-      reactiveStrength: 0.5,
-      ...options,
-    }
+    const config = { count, baseSpeed, reactiveRadius, reactiveStrength }
 
     function resize() {
       const parent = canvas!.parentElement
@@ -119,7 +118,7 @@ export default function Starfield({
       document.removeEventListener('mousemove', handleMouseMove)
       cancelAnimationFrame(animFrameRef.current)
     }
-  }, [options.count, options.baseSpeed, options.reactiveRadius, options.reactiveStrength])
+  }, [count, baseSpeed, reactiveRadius, reactiveStrength])
 
   return (
     <canvas

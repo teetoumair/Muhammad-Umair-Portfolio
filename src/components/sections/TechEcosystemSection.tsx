@@ -35,7 +35,7 @@ export default function TechEcosystemSection() {
           {technologies.map((tech) => (
             <div
               key={tech.name}
-              className="glass-card p-5 sm:p-stack-lg rounded-xl flex flex-col items-center justify-center gap-3 sm:gap-stack-sm transition-colors bg-white/5 border border-white/10 hover:border-white/30"
+              className="p-5 sm:p-stack-lg rounded-xl flex flex-col items-center justify-center gap-3 sm:gap-stack-sm transition-colors bg-white/5 border border-white/10 hover:border-white/30"
             >
               <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center mb-1 sm:mb-base">
                 <span className="material-symbols-outlined text-2xl sm:text-3xl text-white">

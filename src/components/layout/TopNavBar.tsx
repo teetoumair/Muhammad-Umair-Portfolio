@@ -52,7 +52,7 @@ export default function TopNavBar() {
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-xl no-border flat no shadows">
+      <nav className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-xl">
         <div className="max-w-container-max mx-auto px-4 sm:px-margin-mobile md:px-gutter flex justify-between items-center h-16 sm:h-20">
           <a
             className="font-display-lg text-[18px] sm:text-headline-sm font-bold tracking-tighter text-white"

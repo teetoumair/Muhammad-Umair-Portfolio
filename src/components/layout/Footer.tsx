@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-surface-bright dark:bg-surface-container-lowest w-full py-8 sm:py-stack-lg border-t border-outline-variant/30 flat no shadows">
+    <footer className="bg-surface-bright w-full py-8 sm:py-stack-lg border-t border-outline-variant/30">
       <div className="max-w-container-max mx-auto px-4 sm:px-margin-mobile md:px-gutter flex flex-col md:flex-row justify-between items-center gap-5 sm:gap-base">
         <div className="flex flex-col md:items-start items-center text-center md:text-left">
           <span className="font-headline-sm text-[18px] sm:text-headline-sm font-semibold text-on-surface mb-2">
