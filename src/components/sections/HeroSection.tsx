@@ -49,7 +49,7 @@ export default function HeroSection() {
             style={{
               animationDelay: '340ms',
               animationDuration: '1.1s',
-              filter: 'drop-shadow(0 10px 14px rgba(22, 22, 26, 0.16)) drop-shadow(0 30px 50px rgba(22, 22, 26, 0.22))',
+              filter: 'drop-shadow(0 10px 14px rgba(22, 22, 26, 0.12)) drop-shadow(0 30px 50px rgba(22, 22, 26, 0.16))',
             }}
           />
         </div>
