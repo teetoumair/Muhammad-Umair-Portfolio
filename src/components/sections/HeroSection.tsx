@@ -4,8 +4,8 @@ import heroImg from '../../assets/hero.webp'
 export default function HeroSection() {
   return (
     <section id="top" className="pt-40 pb-16 sm:pt-52 sm:pb-24">
-      <div className="shell grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
-        <div className="lg:col-span-8">
+      <div className="shell grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
+        <div className="lg:col-span-8 lg:self-center">
           <p
             className="label-mono animate-rise mb-6 flex items-center gap-2 text-muted"
             style={{ animationDelay: '0ms' }}
@@ -44,7 +44,7 @@ export default function HeroSection() {
             React · TypeScript · Tailwind CSS · Swift · SwiftUI · Git
           </p>
         </div>
-        <div className="flex justify-center lg:col-span-4 lg:justify-end">
+        <div className="flex justify-center lg:col-span-4 lg:self-end lg:justify-end">
           <img
             src={heroImg}
             alt="Portrait of Muhammad Umair"
