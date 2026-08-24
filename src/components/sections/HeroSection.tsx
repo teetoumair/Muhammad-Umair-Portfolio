@@ -37,12 +37,6 @@ export default function HeroSection() {
               GitHub
             </a>
           </div>
-          <p
-            className="label-mono animate-rise mt-14 border-t border-line pt-6 text-muted"
-            style={{ animationDelay: '580ms' }}
-          >
-            React · TypeScript · Tailwind CSS · Swift · SwiftUI · Git
-          </p>
         </div>
         <div className="flex justify-center lg:col-span-4 lg:self-end lg:justify-end">
           <img
@@ -55,6 +49,14 @@ export default function HeroSection() {
             style={{ animationDelay: '340ms', animationDuration: '1.1s' }}
           />
         </div>
+      </div>
+      <div className="shell">
+        <p
+          className="label-mono animate-rise border-t border-line pt-6 text-muted"
+          style={{ animationDelay: '580ms' }}
+        >
+          React · TypeScript · Tailwind CSS · Swift · SwiftUI · Git
+        </p>
       </div>
     </section>
   )
