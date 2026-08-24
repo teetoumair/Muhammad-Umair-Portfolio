@@ -3,7 +3,7 @@ import heroImg from '../../assets/hero.webp'
 
 export default function HeroSection() {
   return (
-    <section id="top" className="pt-40 pb-16 sm:pt-52 sm:pb-24">
+    <section id="top" className="pt-28 pb-16 sm:pt-36 sm:pb-24">
       <div className="shell grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-8 lg:self-center">
           <p
