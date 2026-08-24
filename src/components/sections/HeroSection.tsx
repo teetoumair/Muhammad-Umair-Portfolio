@@ -5,7 +5,7 @@ export default function HeroSection() {
   return (
     <section id="top" className="pt-28 pb-16 sm:pt-36 sm:pb-24">
       <div className="shell grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
-        <div className="lg:col-span-8 lg:self-center">
+        <div className="lg:col-span-7 lg:self-center">
           <p
             className="label-mono animate-rise mb-6 flex items-center gap-2 text-muted"
             style={{ animationDelay: '0ms' }}
@@ -38,14 +38,14 @@ export default function HeroSection() {
             </a>
           </div>
         </div>
-        <div className="flex justify-center lg:col-span-4 lg:self-end lg:justify-end">
+        <div className="flex justify-center lg:col-span-5 lg:self-end lg:justify-end">
           <img
             src={heroImg}
             alt="Portrait of Muhammad Umair"
             width={851}
             height={960}
             decoding="async"
-            className="animate-rise h-[21.5rem] w-auto object-contain sm:h-[29rem] lg:h-[31.25rem] xl:h-[36rem]"
+            className="animate-rise h-auto w-[72%] max-w-[22rem] object-contain sm:w-[52%] md:max-w-[24rem] lg:w-full lg:max-w-[30rem]"
             style={{
               animationDelay: '340ms',
               animationDuration: '1.1s',
