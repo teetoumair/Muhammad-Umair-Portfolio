@@ -51,9 +51,14 @@ export default function HeroSection() {
         </div>
       </div>
       <div className="shell">
-        <p
-          className="label-mono animate-rise border-t border-line pt-6 text-muted"
+        <div
+          aria-hidden="true"
+          className="animate-rise h-px w-full bg-ink/20 shadow-[0_14px_28px_-12px_rgba(22,22,26,0.45)]"
           style={{ animationDelay: '580ms' }}
+        />
+        <p
+          className="label-mono animate-rise pt-6 text-muted"
+          style={{ animationDelay: '640ms' }}
         >
           React · TypeScript · Tailwind CSS · Swift · SwiftUI · Git
         </p>
