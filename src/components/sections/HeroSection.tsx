@@ -50,12 +50,12 @@ export default function HeroSection() {
           />
         </div>
       </div>
+      <div
+        aria-hidden="true"
+        className="animate-rise h-px w-full bg-ink/20 shadow-[0_14px_28px_-12px_rgba(22,22,26,0.45)]"
+        style={{ animationDelay: '580ms' }}
+      />
       <div className="shell">
-        <div
-          aria-hidden="true"
-          className="animate-rise h-px w-full bg-ink/20 shadow-[0_14px_28px_-12px_rgba(22,22,26,0.45)]"
-          style={{ animationDelay: '580ms' }}
-        />
         <p
           className="label-mono animate-rise pt-6 text-muted"
           style={{ animationDelay: '640ms' }}
