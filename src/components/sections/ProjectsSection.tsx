@@ -36,7 +36,7 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section id="work" className="border-t border-line py-20 sm:py-28">
+    <section id="work" className="py-20 sm:py-28">
       <div className="shell">
         <Reveal className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
