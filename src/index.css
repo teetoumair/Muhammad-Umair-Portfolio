@@ -52,7 +52,7 @@
 
 @layer components {
   .shell {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+    @apply mx-auto w-full max-w-[85rem] px-5 sm:px-10 lg:px-14;
   }
 
   .btn-solid {
