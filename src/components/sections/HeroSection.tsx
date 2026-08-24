@@ -51,7 +51,7 @@ export default function HeroSection() {
             width={610}
             height={960}
             decoding="async"
-            className="animate-rise h-72 w-auto object-contain sm:h-96 lg:h-[26rem] xl:h-[30rem]"
+            className="animate-rise h-[21.5rem] w-auto object-contain sm:h-[29rem] lg:h-[31.25rem] xl:h-[36rem]"
             style={{ animationDelay: '340ms', animationDuration: '1.1s' }}
           />
         </div>
