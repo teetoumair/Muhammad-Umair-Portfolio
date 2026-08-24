@@ -46,7 +46,11 @@ export default function HeroSection() {
             height={960}
             decoding="async"
             className="animate-rise h-[21.5rem] w-auto object-contain sm:h-[29rem] lg:h-[31.25rem] xl:h-[36rem]"
-            style={{ animationDelay: '340ms', animationDuration: '1.1s' }}
+            style={{
+              animationDelay: '340ms',
+              animationDuration: '1.1s',
+              filter: 'drop-shadow(0 10px 14px rgba(22, 22, 26, 0.16)) drop-shadow(0 30px 50px rgba(22, 22, 26, 0.22))',
+            }}
           />
         </div>
       </div>
