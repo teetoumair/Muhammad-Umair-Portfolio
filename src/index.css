@@ -1,167 +1,75 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Colors (Material-style palette, migrated from CDN config) */
-  --color-on-tertiary: #ffffff;
-  --color-error: #ba1a1a;
-  --color-surface-bright: #f8f9ff;
-  --color-on-primary: #ffffff;
-  --color-surface-container-high: #dce9ff;
-  --color-surface-container: #e5eeff;
-  --color-on-secondary: #ffffff;
-  --color-secondary-container: #d5e3fd;
-  --color-on-error-container: #93000a;
-  --color-on-error: #ffffff;
-  --color-on-secondary-fixed-variant: #3a485c;
-  --color-tertiary-fixed-dim: #c4c7c9;
-  --color-secondary-fixed-dim: #b9c7e0;
-  --color-surface-dim: #cbdbf5;
-  --color-tertiary-fixed: #e0e3e5;
-  --color-surface-variant: #d3e4fe;
-  --color-surface: #f8f9ff;
-  --color-on-surface-variant: #45464d;
-  --color-surface-tint: #565e74;
-  --color-primary-fixed-dim: #bec6e0;
-  --color-inverse-on-surface: #eaf1ff;
-  --color-on-tertiary-container: #818486;
-  --color-on-surface: #0b1c30;
-  --color-inverse-surface: #213145;
-  --color-surface-container-low: #eff4ff;
-  --color-primary-container: #131b2e;
-  --color-error-container: #ffdad6;
-  --color-tertiary: #000000;
-  --color-secondary: #515f74;
-  --color-surface-container-lowest: #ffffff;
-  --color-on-primary-fixed: #131b2e;
-  --color-background: #f8f9ff;
-  --color-surface-container-highest: #d3e4fe;
-  --color-on-secondary-fixed: #0d1c2f;
-  --color-tertiary-container: #191c1e;
-  --color-outline-variant: #c6c6cd;
-  --color-on-tertiary-fixed: #191c1e;
-  --color-on-primary-fixed-variant: #3f465c;
-  --color-primary: #000000;
-  --color-on-tertiary-fixed-variant: #444749;
-  --color-secondary-fixed: #d5e3fd;
-  --color-primary-fixed: #dae2fd;
-  --color-on-background: #0b1c30;
-  --color-on-secondary-container: #57657b;
-  --color-on-primary-container: #7c839b;
-  --color-outline: #76777d;
-  --color-inverse-primary: #bec6e0;
+  --font-display: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', monospace;
 
-  /* Font families */
-  --font-display-lg: "Hanken Grotesk", sans-serif;
-  --font-headline-sm: "Hanken Grotesk", sans-serif;
-  --font-headline-md: "Hanken Grotesk", sans-serif;
-  --font-label-caps: "Geist", sans-serif;
-  --font-body-md: "Inter", sans-serif;
-  --font-body-lg: "Inter", sans-serif;
-  --font-mono-label: "Geist", sans-serif;
+  --color-paper: #fafaf8;
+  --color-surface: #ffffff;
+  --color-ink: #16161a;
+  --color-soft: #5f6068;
+  --color-muted: #8f9099;
+  --color-line: #e8e7e2;
+  --color-accent: #2b41e8;
+  --color-accent-strong: #2033c2;
+  --color-accent-soft: #eef0fe;
 
-  /* Font sizes */
-  --text-display-lg-mobile: 44px;
-  --text-display-lg-mobile--line-height: 48px;
-  --text-display-lg-mobile--letter-spacing: -0.02em;
-  --text-display-lg-mobile--font-weight: 700;
-  --text-display-lg: 72px;
-  --text-display-lg--line-height: 80px;
-  --text-display-lg--letter-spacing: -0.04em;
-  --text-display-lg--font-weight: 700;
-  --text-headline-sm: 24px;
-  --text-headline-sm--line-height: 32px;
-  --text-headline-sm--letter-spacing: -0.01em;
-  --text-headline-sm--font-weight: 600;
-  --text-headline-md: 40px;
-  --text-headline-md--line-height: 48px;
-  --text-headline-md--letter-spacing: -0.02em;
-  --text-headline-md--font-weight: 600;
-  --text-label-caps: 12px;
-  --text-label-caps--line-height: 16px;
-  --text-label-caps--letter-spacing: 0.1em;
-  --text-label-caps--font-weight: 600;
-  --text-body-md: 16px;
-  --text-body-md--line-height: 26px;
-  --text-body-md--font-weight: 400;
-  --text-mono-label: 14px;
-  --text-mono-label--line-height: 20px;
-  --text-mono-label--font-weight: 500;
-  --text-body-lg: 20px;
-  --text-body-lg--line-height: 32px;
-  --text-body-lg--font-weight: 400;
-
-  /* Spacing scale */
-  --spacing-base: 8px;
-  --spacing-margin-mobile: 24px;
-  --spacing-stack-sm: 12px;
-  --spacing-stack-md: 24px;
-  --spacing-stack-lg: 48px;
-  --spacing-section-gap: 160px;
-  --spacing-gutter: 32px;
-
-  /* Layout */
-  --container-container-max: 1280px;
+  --text-display-sm: 2.5rem;
+  --text-display-sm--line-height: 1.08;
+  --text-display-sm--letter-spacing: -0.03em;
+  --text-display-sm--font-weight: 700;
+  --text-display: clamp(2.75rem, 1.5rem + 5.5vw, 5.25rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.035em;
+  --text-display--font-weight: 700;
+  --text-heading: clamp(1.75rem, 1.3rem + 2vw, 2.75rem);
+  --text-heading--line-height: 1.12;
+  --text-heading--letter-spacing: -0.02em;
+  --text-heading--font-weight: 700;
+  --text-lede: 1.125rem;
+  --text-lede--line-height: 1.75;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-on-surface font-body-md antialiased;
+    @apply bg-paper font-body text-ink antialiased;
     overflow-x: hidden;
   }
-}
 
-.star-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.live-badge-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
+  ::selection {
+    @apply bg-accent text-white;
   }
-  50% {
-    opacity: 0.7;
-    transform: scale(1.1);
+
+  :focus-visible {
+    @apply outline-2 outline-offset-4 outline-accent;
   }
 }
 
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
 
-@media (hover: hover) {
-  .hover-lift:hover {
-    transform: translateY(-4px);
+  .btn-solid {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 font-medium text-paper transition-colors duration-200 hover:bg-accent;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-transparent px-6 py-3 font-medium text-ink transition-colors duration-200 hover:border-ink;
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-full border border-line px-3 py-1 font-mono text-[11px] tracking-[0.18em] uppercase text-muted;
   }
 }
 
-.typing-dot {
-  animation: typingBounce 1.4s infinite ease-in-out;
-}
-.typing-dot:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.typing-dot:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-@keyframes typingBounce {
-  0%, 60%, 100% {
-    transform: translateY(0);
-  }
-  30% {
-    transform: translateY(-4px);
-  }
+@utility label-mono {
+  @apply font-mono text-[11px] tracking-[0.18em] uppercase;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -172,12 +80,5 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-
-@supports not (backdrop-filter: blur(1px)) {
-  .backdrop-blur-xl,
-  .backdrop-blur-md {
-    background-color: rgba(0, 0, 0, 0.85) !important;
   }
 }

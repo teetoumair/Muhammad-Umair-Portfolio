@@ -1,32 +1,29 @@
-# React + TypeScript + Vite
+# Muhammad Umair — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio for [Muhammad Umair](https://www.linkedin.com/in/mohammad-umair-um/), a Computer Science student in Lahore, Pakistan, building products for the web (React, TypeScript) and iOS (Swift, SwiftUI).
 
-Currently, two official plugins are available:
+**Stack:** React 19 · TypeScript · Tailwind CSS 4 · Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Development
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev      # start dev server
+npm run build    # type-check + production build
+npm run lint     # oxlint
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Design system
+
+Tokens live in `src/index.css` under `@theme` (Tailwind CSS 4):
+
+- **Colors:** `paper`, `ink`, `soft`, `line`, `accent`
+- **Type:** Hanken Grotesk (display) · Inter (body) · Geist Mono (labels)
+- Shared classes: `.shell` (page container), `.label-mono`, `.btn-solid`, `.btn-outline`, `.tag`
+
+## Roadmap
+
+- [ ] Ship flagship project: shared expense splitter (React web app + SwiftUI app on a common Supabase backend)
+- [ ] Ship job application tracker
+- [ ] Add résumé download once CV is finalized
+- [ ] Deploy (Vercel/Netlify) with SEO + social card pass

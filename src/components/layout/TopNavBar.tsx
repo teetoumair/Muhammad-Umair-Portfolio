@@ -1,149 +1,86 @@
 import { useState, useEffect } from 'react'
+import { CloseIcon, MenuIcon } from '../ui/icons'
 
-const sectionIds = ['story', 'work', 'lab', 'timeline']
+const links = [
+  { href: '#work', label: 'Work' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#about', label: 'About' },
+  { href: '#contact', label: 'Contact' },
+]
 
 export default function TopNavBar() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [active, setActive] = useState('')
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = []
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id)
-      if (!el) return
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActive(id)
-          }
-        },
-        { rootMargin: '-40% 0px -55% 0px' }
-      )
-      observer.observe(el)
-      observers.push(observer)
-    })
-
-    return () => observers.forEach((o) => o.disconnect())
-  }, [])
-
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => {
       document.body.style.overflow = ''
     }
-    return () => { document.body.style.overflow = '' }
   }, [menuOpen])
-
-  const links = [
-    { href: '#story', label: 'Story' },
-    { href: '#work', label: 'Work' },
-    { href: '#lab', label: 'Lab' },
-    { href: '#timeline', label: 'Timeline' },
-  ]
-
-  const sidebarBg = {
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-    backdropFilter: 'blur(24px)',
-    WebkitBackdropFilter: 'blur(24px)',
-  }
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-xl">
-        <div className="max-w-container-max mx-auto px-4 sm:px-margin-mobile md:px-gutter flex justify-between items-center h-16 sm:h-20">
-          <a
-            className="font-display-lg text-[18px] sm:text-headline-sm font-bold tracking-tighter text-white"
-            href="#"
-          >
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-md">
+        <nav className="shell flex h-16 items-center justify-between" aria-label="Main">
+          <a href="#top" className="font-display text-lg font-bold tracking-tight">
             Muhammad Umair
           </a>
-          <div className="hidden md:flex gap-gutter items-center">
-            {links.map((link) => {
-              const id = link.href.replace('#', '')
-              const isActive = active === id
-              return (
-                <a
-                  key={link.href}
-                  className={`font-label-caps text-label-caps uppercase tracking-widest transition-all duration-200 hover:scale-105 py-2 ${
-                    isActive
-                      ? 'text-white font-bold border-b-2 pb-1 border-white'
-                      : 'text-white/50 font-normal hover:text-white/80'
-                  }`}
-                  href={link.href}
-                >
-                  {link.label}
-                </a>
-              )
-            })}
-            <button className="ml-4 sm:ml-stack-md text-black px-4 sm:px-gutter py-2.5 sm:py-3 rounded-full font-label-caps text-label-caps uppercase tracking-widest transition-all active:opacity-70 hover:scale-105 bg-white border border-white/20 shadow-lg shadow-white/10">
-              Connect
-            </button>
-          </div>
-          <button
-            className="md:hidden text-white w-11 h-11 flex items-center justify-center -mr-2 rounded-lg active:bg-white/10"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <span className="material-symbols-outlined">
-              {menuOpen ? 'close' : 'menu'}
-            </span>
-          </button>
-        </div>
-      </nav>
-
-      {/* Backdrop */}
-      <div
-        className="md:hidden fixed inset-0 z-[60]"
-        style={{
-          backgroundColor: 'rgba(0, 0, 0, 0.3)',
-          opacity: menuOpen ? 1 : 0,
-          pointerEvents: menuOpen ? 'auto' : 'none',
-          transition: 'opacity 300ms',
-        }}
-        onClick={() => setMenuOpen(false)}
-      />
-
-      {/* Sidebar */}
-      <div
-        className="md:hidden fixed top-16 sm:top-20 right-0 bottom-0 w-72 z-[70] flex flex-col border-l border-white/10 pb-[env(safe-area-inset-bottom)]"
-        style={{
-          ...sidebarBg,
-          transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
-          transition: 'transform 300ms ease-out',
-        }}
-      >
-        <div className="flex items-center px-6 py-4 border-b border-white/5">
-          <span className="font-label-caps text-[11px] uppercase tracking-[0.2em] text-white/50">Menu</span>
-        </div>
-        <div className="flex flex-col">
-          {links.map((link) => {
-            const id = link.href.replace('#', '')
-            const isActive = active === id
-            return (
+          <div className="hidden items-center gap-8 md:flex">
+            {links.map((link) => (
               <a
                 key={link.href}
-                className={`w-full font-label-caps text-[13px] uppercase tracking-[0.2em] px-6 py-4 transition-colors duration-200 border-b border-white/5 active:bg-white/10 active:scale-[0.98] ${
-                  isActive
-                    ? 'text-white bg-white/5'
-                    : 'text-white/70 hover:text-white hover:bg-white/5'
-                }`}
                 href={link.href}
-                onClick={() => setMenuOpen(false)}
+                className="text-sm text-soft transition-colors hover:text-ink"
               >
                 {link.label}
               </a>
-            )
-          })}
-        </div>
-        <div className="px-6 pt-8">
+            ))}
+            <a href="#contact" className="btn-solid px-5 py-2 text-sm">
+              Say hello
+            </a>
+          </div>
           <button
-            className="w-full bg-white text-black py-3 rounded-full font-label-caps text-[13px] uppercase tracking-widest font-bold"
-            onClick={() => setMenuOpen(false)}
+            type="button"
+            className="-mr-2 flex h-11 w-11 items-center justify-center rounded-lg text-ink md:hidden"
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setMenuOpen(!menuOpen)}
           >
-            Connect
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
+        </nav>
+      </header>
+
+      <div
+        className={`fixed inset-0 z-[60] bg-ink/20 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
+          menuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
+      />
+      <div
+        className={`fixed inset-x-0 top-16 z-[70] border-b border-line bg-paper transition-transform duration-300 ease-out md:hidden ${
+          menuOpen ? 'translate-y-0' : '-translate-y-[110%]'
+        }`}
+      >
+        <div className="flex flex-col px-5 py-4">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className="border-b border-line py-4 font-display text-xl font-semibold last:border-b-0"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={() => setMenuOpen(false)}
+            className="btn-solid mt-4 mb-2"
+          >
+            Say hello
+          </a>
         </div>
       </div>
     </>

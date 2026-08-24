@@ -1,39 +1,31 @@
+import { GitHubIcon, LinkedInIcon } from '../ui/icons'
+
 export default function Footer() {
   return (
-    <footer className="bg-surface-bright w-full py-8 sm:py-stack-lg border-t border-outline-variant/30">
-      <div className="max-w-container-max mx-auto px-4 sm:px-margin-mobile md:px-gutter flex flex-col md:flex-row justify-between items-center gap-5 sm:gap-base">
-        <div className="flex flex-col md:items-start items-center text-center md:text-left">
-          <span className="font-headline-sm text-[18px] sm:text-headline-sm font-semibold text-on-surface mb-2">
-            Muhammad Umair
-          </span>
-          <p className="font-body-md text-[14px] sm:text-body-md text-secondary">
-            © {new Date().getFullYear()} Technology Innovator. All rights reserved.
-          </p>
-        </div>
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-gutter">
+    <footer className="border-t border-line">
+      <div className="shell flex flex-col items-center justify-between gap-6 py-10 sm:flex-row">
+        <p className="text-sm text-soft">© {new Date().getFullYear()} Muhammad Umair — Lahore, Pakistan</p>
+        <div className="flex items-center gap-5">
           <a
-            className="font-body-md text-[14px] sm:text-body-md text-secondary hover:text-primary transition-colors hover:translate-y-[-2px] transition-transform duration-300 px-2 py-2"
-            href="#"
+            href="https://github.com/teetoumair"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub profile"
+            className="text-soft transition-colors hover:text-ink"
           >
-            LinkedIn
+            <GitHubIcon className="h-5 w-5" />
           </a>
           <a
-            className="font-body-md text-[14px] sm:text-body-md text-secondary hover:text-primary transition-colors hover:translate-y-[-2px] transition-transform duration-300 px-2 py-2"
-            href="#"
+            href="https://www.linkedin.com/in/mohammad-umair-um/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn profile"
+            className="text-soft transition-colors hover:text-ink"
           >
-            Twitter
+            <LinkedInIcon className="h-5 w-5" />
           </a>
-          <a
-            className="font-body-md text-[14px] sm:text-body-md text-secondary hover:text-primary transition-colors hover:translate-y-[-2px] transition-transform duration-300 px-2 py-2"
-            href="#"
-          >
-            GitHub
-          </a>
-          <a
-            className="font-body-md text-[14px] sm:text-body-md text-secondary hover:text-primary transition-colors hover:translate-y-[-2px] transition-transform duration-300 px-2 py-2"
-            href="#"
-          >
-            Email
+          <a href="#top" className="label-mono text-muted transition-colors hover:text-ink">
+            Back to top ↑
           </a>
         </div>
       </div>
