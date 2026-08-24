@@ -1,3 +1,4 @@
+import Reveal from '../ui/Reveal'
 import { ArrowUpRightIcon, GitHubIcon } from '../ui/icons'
 
 const projects = [
@@ -37,18 +38,20 @@ export default function ProjectsSection() {
   return (
     <section id="work" className="border-t border-line py-20 sm:py-28">
       <div className="shell">
-        <div className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <Reveal className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <p className="label-mono mb-3 text-muted">Selected work</p>
+            <p className="label-mono mb-3 text-muted">01 · Selected work</p>
             <h2 className="text-heading max-w-lg">Things I&apos;ve built, and things I&apos;m building.</h2>
           </div>
           <p className="text-sm text-soft">More shipping soon.</p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          {projects.map((project) => (
-            <article
+          {projects.map((project, index) => (
+            <Reveal
               key={project.title}
+              as="article"
+              delay={index * 110}
               className={`group flex flex-col rounded-2xl border border-line bg-surface p-7 transition-colors duration-200 hover:border-ink sm:p-9 ${
                 project.featured ? 'md:col-span-2' : ''
               }`}
@@ -89,7 +92,7 @@ export default function ProjectsSection() {
                   ))}
                 </div>
               )}
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
