@@ -42,7 +42,7 @@ export default function HeroSection() {
           <img
             src={heroImg}
             alt="Portrait of Muhammad Umair"
-            width={610}
+            width={851}
             height={960}
             decoding="async"
             className="animate-rise h-[21.5rem] w-auto object-contain sm:h-[29rem] lg:h-[31.25rem] xl:h-[36rem]"
