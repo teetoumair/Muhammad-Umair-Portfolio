@@ -4,7 +4,7 @@ import ChatBubble, { type ChatMessage } from '../ui/ChatBubble'
 import { ArrowUpRightIcon } from '../ui/icons'
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${API_KEY}`
 
 const SYSTEM_PROMPT = `You are Muhammad Umair's AI portfolio assistant. You ONLY answer questions about Muhammad Umair — his skills, projects, experience, education, availability, and how to contact him. 
 
