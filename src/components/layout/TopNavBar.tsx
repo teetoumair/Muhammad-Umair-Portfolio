@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
 import { CloseIcon, MenuIcon } from '../ui/icons'
+import HashLink from '../ui/HashLink'
 
 const links = [
   { to: '/#live', label: 'Live sites' },
@@ -65,13 +66,13 @@ export default function TopNavBar() {
           </Link>
           <div className="hidden items-center gap-8 md:flex">
             {links.map((link) => (
-              <Link
+              <HashLink
                 key={link.to}
                 to={link.to}
                 className="text-sm text-soft transition-colors hover:text-ink"
               >
                 {link.label}
-              </Link>
+              </HashLink>
             ))}
             {routeLinks.map((link) => (
               <Link
@@ -82,9 +83,9 @@ export default function TopNavBar() {
                 {link.label}
               </Link>
             ))}
-            <Link to="/#contact" className="btn-solid px-5 py-2 text-sm">
+            <HashLink to="/#contact" className="btn-solid px-5 py-2 text-sm">
               Say hello
-            </Link>
+            </HashLink>
           </div>
           <button
             type="button"
@@ -112,14 +113,14 @@ export default function TopNavBar() {
       >
         <div className="flex flex-col px-5 py-4">
           {links.map((link) => (
-            <Link
+            <HashLink
               key={link.to}
               to={link.to}
               onClick={() => setMenuOpen(false)}
               className="border-b border-line py-4 font-display text-xl font-semibold last:border-b-0"
             >
               {link.label}
-            </Link>
+            </HashLink>
           ))}
           {routeLinks.map((link) => (
             <Link
@@ -131,13 +132,13 @@ export default function TopNavBar() {
               {link.label}
             </Link>
           ))}
-          <Link
+          <HashLink
             to="/#contact"
             onClick={() => setMenuOpen(false)}
             className="btn-solid mt-4 mb-2"
           >
             Say hello
-          </Link>
+          </HashLink>
           <a
             href="/resume.pdf"
             download
