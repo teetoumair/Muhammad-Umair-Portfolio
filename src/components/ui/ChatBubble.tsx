@@ -22,7 +22,7 @@ function UserAvatar() {
 function AIAvatar() {
   return (
     <div className="relative mt-1.5 flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/15">
-      <img src={heroImg} alt="AI" className="h-full w-full object-cover" />
+      <img src={heroImg} alt="AI" className="h-full w-full rounded-full object-cover object-top" />
     </div>
   )
 }
