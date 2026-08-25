@@ -1,8 +1,8 @@
-import { ArrowUpRightIcon, DownloadIcon, MailIcon } from '../ui/icons'
+import { ArrowUpRightIcon } from '../ui/icons'
+import { Link } from 'react-router'
 import MaskWords from '../ui/MaskWords'
 import CountUp from '../ui/CountUp'
 import heroImg from '../../assets/hero.webp'
-import { EMAIL } from './contact-info'
 
 const stats = [
   { to: 4, suffix: '', label: 'Live production sites' },
@@ -44,14 +44,10 @@ export default function HeroSection() {
               View projects
               <ArrowUpRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
-            <a href={`mailto:${EMAIL}`} className="btn-outline">
-              <MailIcon className="h-4 w-4" />
-              Email me
-            </a>
-            <a href="/resume.pdf" download className="btn-outline">
-              <DownloadIcon className="h-4 w-4" />
-              Résumé
-            </a>
+            <Link to="/chatbot" className="btn-accent group">
+              Talk to my AI
+              <ArrowUpRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
           </div>
         </div>
         <div className="relative flex justify-center lg:col-span-5 lg:self-end lg:justify-end">
