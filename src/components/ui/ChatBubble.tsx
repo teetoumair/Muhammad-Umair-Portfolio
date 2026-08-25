@@ -1,4 +1,4 @@
-import profileImg from '../../assets/profile.jpg'
+import heroImg from '../../assets/hero.webp'
 
 export interface ChatMessage {
   id: string
@@ -22,7 +22,7 @@ function UserAvatar() {
 function AIAvatar() {
   return (
     <div className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/15">
-      <img src={profileImg} alt="AI" className="h-full w-full object-cover" />
+      <img src={heroImg} alt="AI" className="h-full w-full object-cover" />
     </div>
   )
 }
