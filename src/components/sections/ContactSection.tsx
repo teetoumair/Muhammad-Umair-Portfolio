@@ -30,7 +30,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-ink py-24 text-paper sm:py-32">
+    <section id="contact" className="relative overflow-hidden bg-ink py-16 text-paper sm:py-24 lg:py-32">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -126,14 +126,14 @@ export default function ContactSection() {
       </div>
       <div aria-hidden="true" className="marquee mt-20">
         <div
-          className="marquee-track items-center gap-10 sm:gap-14"
+          className="marquee-track items-center gap-6 sm:gap-10 lg:gap-14"
           style={{ '--marquee-duration': '52s' } as CSSProperties}
         >
           {[0, 1].map((half) => (
-            <div key={half} className="flex shrink-0 items-center gap-10 sm:gap-14">
+            <div key={half} className="flex shrink-0 items-center gap-6 sm:gap-10 lg:gap-14">
               {['Open to work', "Let's talk", 'Open to work', "Let's talk"].map((phrase, i) => (
-                <span key={i} className="flex items-center gap-10 sm:gap-14">
-                  <span className="text-outline whitespace-nowrap font-display text-5xl font-bold uppercase tracking-tight sm:text-7xl">
+                <span key={i} className="flex items-center gap-6 sm:gap-10 lg:gap-14">
+                  <span className="text-outline whitespace-nowrap font-display text-3xl font-bold uppercase tracking-tight sm:text-5xl lg:text-7xl">
                     {phrase}
                   </span>
                   <span className="h-2 w-2 shrink-0 rounded-full bg-accent" />

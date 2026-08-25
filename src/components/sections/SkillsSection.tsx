@@ -20,7 +20,7 @@ const currentlyLearning = [
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="border-t border-line py-20 sm:py-28">
+    <section id="skills" className="border-t border-line py-16 sm:py-20 lg:py-28">
       <div className="shell">
         <div className="mb-14">
           <ChapterKicker num="03" title="Toolkit" className="mb-4" />
@@ -38,7 +38,7 @@ export default function SkillsSection() {
                   key={skill}
                   as="li"
                   delay={index * 70}
-                  className="group flex items-center justify-between gap-3 border-b border-line py-4 font-display text-lg font-semibold transition-colors first:border-t hover:border-ink"
+                  className="group flex items-center justify-between gap-3 border-b border-line py-4 font-display text-base font-semibold transition-colors first:border-t hover:border-ink sm:text-lg"
                 >
                   <span className="min-w-0 transition-transform duration-300 ease-out group-hover:translate-x-1.5">{skill}</span>
                   <span className="label-mono shrink-0 text-muted transition-colors group-hover:text-accent">Core</span>
@@ -54,7 +54,7 @@ export default function SkillsSection() {
                   key={skill}
                   as="li"
                   delay={index * 70}
-                  className="group flex items-center justify-between gap-3 border-b border-line py-4 font-display text-lg font-semibold text-soft transition-colors first:border-t hover:border-ink"
+                  className="group flex items-center justify-between gap-3 border-b border-line py-4 font-display text-base font-semibold text-soft transition-colors first:border-t hover:border-ink sm:text-lg"
                 >
                   <span className="min-w-0 transition-transform duration-300 ease-out group-hover:translate-x-1.5">{skill}</span>
                   <span className="label-mono shrink-0 text-muted transition-colors group-hover:text-accent">Growing</span>

@@ -95,7 +95,7 @@ function CompanyMockup() {
         </span>
       </div>
       <div
-        className="relative p-6 sm:p-8"
+        className="relative p-4 sm:p-6 lg:p-8"
         style={{
           background:
             'linear-gradient(135deg, rgba(22,22,26,0.97), rgba(28,32,60,0.97)), radial-gradient(80% 100% at 90% 0%, rgba(43,65,232,0.35), transparent)',
@@ -149,7 +149,7 @@ function CompanyMockup() {
 
 export default function LiveWorkSection() {
   return (
-    <section id="live" className="border-t border-line py-20 sm:py-28">
+    <section id="live" className="border-t border-line py-16 sm:py-20 lg:py-28">
       <div className="shell">
         <div className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
@@ -208,7 +208,7 @@ export default function LiveWorkSection() {
                 target="_blank"
                 rel="noreferrer"
                 delay={120 + index * 110}
-                className="card-lift group flex flex-col rounded-2xl border border-line bg-surface p-6 hover:border-ink sm:p-7"
+                className="card-lift group flex flex-col rounded-2xl border border-line bg-surface p-5 hover:border-ink sm:p-6 lg:p-7"
               >
                 <MiniSiteMockup initial={initial} />
                 <div className="mt-6 mb-4 flex justify-end">

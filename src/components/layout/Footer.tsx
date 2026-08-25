@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="border-t border-line">
       <div className="shell flex flex-col items-center justify-between gap-6 py-10 sm:flex-row">
         <p className="text-sm text-soft">© {new Date().getFullYear()} Muhammad Umair — Lahore, Pakistan</p>
-        <div className="flex items-center gap-5">
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:justify-end">
           <a
             href={`mailto:${EMAIL}`}
             aria-label={`Email ${EMAIL}`}

@@ -12,10 +12,10 @@ const facts = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="border-t border-line py-20 sm:py-28">
+    <section id="about" className="border-t border-line py-16 sm:py-20 lg:py-28">
       <div className="shell grid grid-cols-1 items-start gap-12 md:grid-cols-12 md:gap-10">
         <Reveal className="md:col-span-4" delay={100}>
-          <div className="max-w-[280px] overflow-hidden rounded-2xl border border-line">
+          <div className="max-w-[240px] overflow-hidden rounded-2xl border border-line sm:max-w-[280px]">
             <img
               src={profileImg}
               alt="Portrait of Muhammad Umair"

@@ -39,7 +39,7 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20 lg:py-28">
       <div className="shell">
         <div className="mb-14">
           <ChapterKicker num="01" title="Contact" className="mb-4" />

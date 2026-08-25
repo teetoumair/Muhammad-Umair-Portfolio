@@ -59,11 +59,11 @@
   }
 
   .btn-solid {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 font-medium text-paper transition duration-200 hover:-translate-y-0.5 hover:bg-accent active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-2.5 font-medium text-paper transition duration-200 hover:-translate-y-0.5 hover:bg-accent active:translate-y-0 sm:px-6 sm:py-3;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-transparent px-6 py-3 font-medium text-ink transition duration-200 hover:-translate-y-0.5 hover:border-ink active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-transparent px-5 py-2.5 font-medium text-ink transition duration-200 hover:-translate-y-0.5 hover:border-ink active:translate-y-0 sm:px-6 sm:py-3;
   }
 
   .tag {
@@ -71,11 +71,11 @@
   }
 
   .btn-accent {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 font-medium text-white transition duration-200 hover:-translate-y-0.5 hover:bg-accent-strong active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-2.5 font-medium text-white transition duration-200 hover:-translate-y-0.5 hover:bg-accent-strong active:translate-y-0 sm:px-6 sm:py-3;
   }
 
   .btn-light {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-transparent px-6 py-3 font-medium text-paper transition duration-200 hover:-translate-y-0.5 hover:border-white/60 active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-transparent px-5 py-2.5 font-medium text-paper transition duration-200 hover:-translate-y-0.5 hover:border-white/60 active:translate-y-0 sm:px-6 sm:py-3;
   }
 
   .card-lift {
@@ -222,10 +222,16 @@
   font-family: var(--font-display);
   font-weight: 700;
   float: left;
-  font-size: 3em;
+  font-size: 2.2em;
   line-height: 0.82;
   padding-right: 0.12em;
   padding-top: 0.05em;
+}
+
+@media (min-width: 640px) {
+  .story-first::first-letter {
+    font-size: 3em;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

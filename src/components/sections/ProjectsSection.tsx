@@ -195,7 +195,7 @@ function ProjectPreview({ variant, tint }: { variant: 'portfolio' | 'split' | 't
 
 export default function ProjectsSection() {
   return (
-    <section id="work" className="py-20 sm:py-28">
+    <section id="work" className="py-16 sm:py-20 lg:py-28">
       <div className="shell">
         <div className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
@@ -215,7 +215,7 @@ export default function ProjectsSection() {
               key={project.title}
               as="article"
               delay={index * 110}
-              className={`card-lift group flex flex-col rounded-2xl border border-line bg-surface p-7 hover:border-ink sm:p-9 ${
+              className={`card-lift group flex flex-col rounded-2xl border border-line bg-surface p-5 hover:border-ink sm:p-7 md:p-9 ${
                 project.featured ? 'md:col-span-2' : ''
               }`}
             >
@@ -232,7 +232,7 @@ export default function ProjectsSection() {
                   {project.status}
                 </span>
               </div>
-              <h3 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
+              <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl md:text-3xl">
                 {project.title}
               </h3>
               <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-soft">

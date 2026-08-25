@@ -90,7 +90,7 @@ function WelcomeScreen({ onSelect }: { onSelect: (query: string) => void }) {
       <div className="mb-6 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border-2 border-accent/30 bg-accent/10 shadow-lg shadow-accent/10">
         <img src={heroImg} alt="AI Assistant" className="h-full w-full rounded-full object-cover object-top" />
       </div>
-      <h2 className="font-display text-2xl font-bold tracking-tight text-paper sm:text-3xl">
+      <h2 className="font-display text-xl font-bold tracking-tight text-paper sm:text-2xl md:text-3xl">
         Hi, I'm Umair's AI assistant
       </h2>
       <p className="mt-3 max-w-md text-sm leading-relaxed text-paper/40">

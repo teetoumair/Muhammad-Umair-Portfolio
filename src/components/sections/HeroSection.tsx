@@ -13,7 +13,7 @@ const stats = [
 
 export default function HeroSection() {
   return (
-    <section id="top" className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-20">
+    <section id="top" className="relative overflow-hidden pt-20 pb-12 sm:pt-36 sm:pb-20">
       <div className="shell grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-7 lg:self-center">
           <p
@@ -81,7 +81,7 @@ export default function HeroSection() {
         style={{ animationDelay: '580ms' }}
       />
       <div className="shell">
-        <dl className="animate-rise grid grid-cols-2 gap-x-8 gap-y-6 pt-8 sm:grid-cols-4" style={{ animationDelay: '640ms' }}>
+        <dl className="animate-rise grid grid-cols-2 gap-x-4 gap-y-6 pt-8 sm:gap-x-8 sm:grid-cols-4" style={{ animationDelay: '640ms' }}>
           {stats.map((stat) => (
             <div key={stat.label}>
               <dt className="label-mono order-2 mt-1.5 text-muted">{stat.label}</dt>

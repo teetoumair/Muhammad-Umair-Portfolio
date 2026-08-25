@@ -60,7 +60,7 @@ export default function TopNavBar() {
               alt="Muhammad Umair"
               className="h-9 w-9 rounded-full border border-line object-cover"
             />
-            <span className="font-display text-lg font-bold tracking-tight">
+            <span className="truncate font-display text-base font-bold tracking-tight sm:text-lg">
               Muhammad Umair
             </span>
           </Link>
@@ -111,7 +111,7 @@ export default function TopNavBar() {
           menuOpen ? 'translate-y-0' : '-translate-y-[110%]'
         }`}
       >
-        <div className="flex flex-col px-5 py-4">
+        <div className="flex max-h-[calc(100vh-4rem)] flex-col overflow-y-auto px-5 py-4">
           {links.map((link) => (
             <HashLink
               key={link.to}
