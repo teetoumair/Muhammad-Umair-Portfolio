@@ -1,36 +1,60 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router'
+import { GoogleGenerativeAI } from '@google/generative-ai'
 import ChatBubble, { type ChatMessage } from '../ui/ChatBubble'
 import { ArrowUpRightIcon } from '../ui/icons'
+
+const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY)
+
+const SYSTEM_PROMPT = `You are Muhammad Umair's AI portfolio assistant. You ONLY answer questions about Muhammad Umair — his skills, projects, experience, education, availability, and how to contact him. 
+
+RULES:
+1. ONLY discuss Muhammad Umair. If asked about anything else, politely redirect to topics about him.
+2. Never make up information. Only use the facts provided below.
+3. Keep responses concise and friendly (2-4 sentences max unless details are needed).
+4. Always be helpful and professional.
+
+FACTS ABOUT MUHAMMAD UMAIR:
+- Full name: Muhammad Umair (also known as Umair Shafi)
+- Role: Product Developer
+- Location: Lahore, Pakistan
+- Education: BS Computer Science (in progress)
+- Focus: Web front-end & iOS apps
+- Looking for: Internships and junior roles
+
+SKILLS (Daily Drivers):
+- TypeScript & JavaScript
+- React
+- HTML & modern CSS
+- Tailwind CSS
+- Swift & SwiftUI
+- Git & GitHub
+
+CURRENTLY LEARNING:
+- Node.js & Express
+- PostgreSQL & SQL
+- Supabase
+- Testing (Vitest)
+
+PROJECTS:
+1. This portfolio website - Built from scratch with React, TypeScript, Tailwind CSS 4, Vite. Custom design system, responsive editorial layout.
+2. Shared Expense Splitter - One product, two platforms. React web app + native SwiftUI companion app. Uses Supabase for shared backend.
+3. Job Application Tracker - For students managing internship applications. REST API with filtering and search.
+4. 4 Live Production Sites for Nextek Sol (Inc) - Real deployed sites serving real users.
+
+CONTACT:
+- Email: umairshafi.professional@gmail.com
+- GitHub: github.com/teetoumair
+- LinkedIn: linkedin.com/in/mohammad-umair-um/
+- Usually replies within 24 hours
+
+AVAILABILITY: Open to internships and junior developer roles, both remote and on-site.`
 
 const WELCOME_MESSAGE: ChatMessage = {
   id: 'welcome',
   role: 'assistant',
   text: "Hi! I'm Muhammad Umair's AI assistant. Ask me about his skills, projects, availability, or how to get in touch!",
 }
-
-const SAMPLE_CONVERSATIONS: { q: string; a: string }[] = [
-  {
-    q: 'What does Muhammad do?',
-    a: "Muhammad Umair is a Product Developer who builds for the web (React, TypeScript) and iOS (Swift, SwiftUI). He's a Computer Science student in Lahore, Pakistan, currently open to internships and junior roles.",
-  },
-  {
-    q: 'What are his main skills?',
-    a: "His core daily drivers are TypeScript & JavaScript, React, HTML & modern CSS, Tailwind CSS, Swift & SwiftUI, and Git/GitHub. He's also learning Node.js, PostgreSQL, Supabase, and Vitest to go full-stack.",
-  },
-  {
-    q: 'Has he shipped any real products?',
-    a: "Yes! He has 4 live production sites for Nextek Sol (Inc), plus his own portfolio, a shared expense splitter (web + iOS), and a job application tracker — all built with real users in mind.",
-  },
-  {
-    q: 'How can I contact him?',
-    a: "You can email him at umairshafi.professional@gmail.com, find him on GitHub (@teetoumair) or LinkedIn (/in/mohammad-umair-um/). He usually replies within 24 hours!",
-  },
-  {
-    q: 'Is he available for work?',
-    a: "Yes! Muhammad is open to internships and junior developer roles. He's based in Lahore, Pakistan and is available for both remote and on-site opportunities.",
-  },
-]
 
 function TypingIndicator() {
   return (
@@ -51,24 +75,28 @@ function TypingIndicator() {
   )
 }
 
-function getResponse(input: string): string {
-  const lower = input.toLowerCase()
-  if (lower.includes('skill') || lower.includes('tech') || lower.includes('stack') || lower.includes('know')) {
-    return SAMPLE_CONVERSATIONS[1].a
+async function getGeminiResponse(
+  chatHistory: { role: string; text: string }[],
+  userMessage: string
+): Promise<string> {
+  try {
+    const model = genAI.getGenerativeModel({
+      model: 'gemini-2.0-flash',
+      systemInstruction: SYSTEM_PROMPT,
+    })
+
+    const chat = model.startChat({
+      history: chatHistory.map((msg) => ({
+        role: msg.role === 'assistant' ? 'model' : 'user',
+        parts: [{ text: msg.text }],
+      })),
+    })
+
+    const result = await chat.sendMessage(userMessage)
+    return result.response.text()
+  } catch {
+    return "Sorry, I'm having trouble connecting right now. Please try again in a moment."
   }
-  if (lower.includes('project') || lower.includes('build') || lower.includes('ship') || lower.includes('work')) {
-    return SAMPLE_CONVERSATIONS[2].a
-  }
-  if (lower.includes('contact') || lower.includes('email') || lower.includes('reach') || lower.includes('hire')) {
-    return SAMPLE_CONVERSATIONS[3].a
-  }
-  if (lower.includes('available') || lower.includes('intern') || lower.includes('job') || lower.includes('role') || lower.includes('open')) {
-    return SAMPLE_CONVERSATIONS[4].a
-  }
-  if (lower.includes('who') || lower.includes('what') || lower.includes('do')) {
-    return SAMPLE_CONVERSATIONS[0].a
-  }
-  return "That's a great question! Muhammad Umair is a Product Developer specializing in React, TypeScript, and Swift. He's a CS student in Lahore, open to internships. Want to know about his skills, projects, or how to reach him?"
 }
 
 export default function ChatbotPage() {
@@ -88,7 +116,7 @@ export default function ChatbotPage() {
     inputRef.current?.focus()
   }, [])
 
-  function handleSend() {
+  async function handleSend() {
     const trimmed = input.trim()
     if (!trimmed || isTyping) return
 
@@ -101,15 +129,19 @@ export default function ChatbotPage() {
     setInput('')
     setIsTyping(true)
 
-    setTimeout(() => {
-      const aiMsg: ChatMessage = {
-        id: `ai-${Date.now()}`,
-        role: 'assistant',
-        text: getResponse(trimmed),
-      }
-      setMessages((prev) => [...prev, aiMsg])
-      setIsTyping(false)
-    }, 1200 + Math.random() * 800)
+    const chatHistory = messages
+      .filter((m) => m.id !== 'welcome')
+      .map((m) => ({ role: m.role, text: m.text }))
+
+    const response = await getGeminiResponse(chatHistory, trimmed)
+
+    const aiMsg: ChatMessage = {
+      id: `ai-${Date.now()}`,
+      role: 'assistant',
+      text: response,
+    }
+    setMessages((prev) => [...prev, aiMsg])
+    setIsTyping(false)
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
@@ -143,7 +175,7 @@ export default function ChatbotPage() {
             Ask me about Muhammad Umair
           </h1>
           <p className="mt-2 text-sm text-paper/50">
-            Pre-powered by Gemini — real AI coming soon.
+            Powered by Gemini — ask about skills, projects, or availability.
           </p>
         </div>
 
