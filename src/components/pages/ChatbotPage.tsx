@@ -81,7 +81,7 @@ async function getGeminiResponse(
 ): Promise<string> {
   try {
     const model = genAI.getGenerativeModel({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-2.5-flash',
       systemInstruction: SYSTEM_PROMPT,
     })
 
@@ -94,7 +94,8 @@ async function getGeminiResponse(
 
     const result = await chat.sendMessage(userMessage)
     return result.response.text()
-  } catch {
+  } catch (err) {
+    console.error('Gemini API error:', err)
     return "Sorry, I'm having trouble connecting right now. Please try again in a moment."
   }
 }
