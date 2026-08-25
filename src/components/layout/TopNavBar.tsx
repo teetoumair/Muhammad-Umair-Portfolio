@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
 import { CloseIcon, MenuIcon } from '../ui/icons'
+import profileImg from '../../assets/profile.jpg'
 
 const links = [
   { href: '#live', label: 'Live sites' },
@@ -55,8 +56,15 @@ export default function TopNavBar() {
         }`}
       >
         <nav className="shell flex h-16 items-center justify-between" aria-label="Main">
-          <a href="#top" className="font-display text-lg font-bold tracking-tight">
-            Muhammad Umair
+          <a href="#top" className="flex items-center gap-2.5">
+            <img
+              src={profileImg}
+              alt="Muhammad Umair"
+              className="h-9 w-9 rounded-full border border-line object-cover object-[center_20%]"
+            />
+            <span className="font-display text-lg font-bold tracking-tight">
+              Muhammad Umair
+            </span>
           </a>
           <div className="hidden items-center gap-8 md:flex">
             {links.map((link) => (
