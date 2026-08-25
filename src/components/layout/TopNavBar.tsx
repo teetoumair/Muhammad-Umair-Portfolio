@@ -7,12 +7,10 @@ const links = [
   { href: '#work', label: 'Work' },
   { href: '#skills', label: 'Skills' },
   { href: '#about', label: 'About' },
-  { href: '#contact', label: 'Contact' },
 ]
 
 const routeLinks = [
-  { to: '/chatbot', label: 'Chatbot' },
-  { to: '/contact', label: 'Get in touch' },
+  { to: '/contact', label: 'Contact' },
 ]
 
 export default function TopNavBar() {
