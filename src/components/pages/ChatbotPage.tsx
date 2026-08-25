@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router'
-import { GoogleGenerativeAI } from '@google/generative-ai'
 import ChatBubble, { type ChatMessage } from '../ui/ChatBubble'
 import { ArrowUpRightIcon } from '../ui/icons'
 
-const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY)
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`
 
 const SYSTEM_PROMPT = `You are Muhammad Umair's AI portfolio assistant. You ONLY answer questions about Muhammad Umair — his skills, projects, experience, education, availability, and how to contact him. 
 
@@ -80,20 +80,33 @@ async function getGeminiResponse(
   userMessage: string
 ): Promise<string> {
   try {
-    const model = genAI.getGenerativeModel({
-      model: 'gemini-2.5-flash',
-      systemInstruction: SYSTEM_PROMPT,
-    })
-
-    const chat = model.startChat({
-      history: chatHistory.map((msg) => ({
+    const contents = [
+      ...chatHistory.map((msg) => ({
         role: msg.role === 'assistant' ? 'model' : 'user',
         parts: [{ text: msg.text }],
       })),
+      { role: 'user', parts: [{ text: userMessage }] },
+    ]
+
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system_instruction: {
+          parts: [{ text: SYSTEM_PROMPT }],
+        },
+        contents,
+      }),
     })
 
-    const result = await chat.sendMessage(userMessage)
-    return result.response.text()
+    const data = await res.json()
+
+    if (data.error) {
+      console.error('Gemini API error:', data.error)
+      return "Sorry, I'm having trouble connecting right now. Please try again in a moment."
+    }
+
+    return data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response received.'
   } catch (err) {
     console.error('Gemini API error:', err)
     return "Sorry, I'm having trouble connecting right now. Please try again in a moment."
