@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router'
 import ChatBubble, { type ChatMessage } from '../ui/ChatBubble'
 import { ArrowUpRightIcon } from '../ui/icons'
+import profileImg from '../../assets/profile.jpg'
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${API_KEY}`
@@ -69,7 +70,7 @@ function TypingIndicator() {
     <div className="chat-msg flex justify-start">
       <div className="flex items-start gap-2.5">
         <div className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/15">
-          <img src="/favicon.png" alt="AI" className="h-full w-full object-cover" />
+          <img src={profileImg} alt="AI" className="h-full w-full object-cover" />
         </div>
         <div className="rounded-2xl rounded-bl-md bg-white/10 px-4 py-3">
           <div className="flex items-center gap-1.5">
@@ -87,7 +88,7 @@ function WelcomeScreen({ onSelect }: { onSelect: (query: string) => void }) {
   return (
     <div className="flex flex-1 flex-col items-center justify-center px-4 py-8 text-center">
       <div className="mb-6 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border-2 border-accent/30 bg-accent/10 shadow-lg shadow-accent/10">
-        <img src="/favicon.png" alt="AI Assistant" className="h-full w-full object-cover" />
+        <img src={profileImg} alt="AI Assistant" className="h-full w-full object-cover" />
       </div>
       <h2 className="font-display text-2xl font-bold tracking-tight text-paper sm:text-3xl">
         Hi, I'm Umair's AI assistant
