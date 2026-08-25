@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://muhammad-umair-portfolio-zeta.vercel.app/sitemap.xml

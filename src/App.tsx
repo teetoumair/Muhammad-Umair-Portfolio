@@ -7,10 +7,12 @@ import ProjectsSection from './components/sections/ProjectsSection'
 import SkillsSection from './components/sections/SkillsSection'
 import AboutSection from './components/sections/AboutSection'
 import ContactSection from './components/sections/ContactSection'
+import JsonLd from './components/seo/JsonLd'
 
 export default function App() {
   return (
     <>
+      <JsonLd />
       <ScrollProgress />
       <TopNavBar />
       <main>
