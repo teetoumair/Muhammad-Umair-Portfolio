@@ -10,9 +10,9 @@ export default function App() {
     <>
       <JsonLd />
       <Routes>
+        <Route path="chatbot" element={<ChatbotPage />} />
         <Route element={<PageLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="chatbot" element={<ChatbotPage />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>
       </Routes>

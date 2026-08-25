@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router'
 import ChatBubble, { type ChatMessage } from '../ui/ChatBubble'
 import { ArrowUpRightIcon } from '../ui/icons'
 
@@ -131,6 +132,12 @@ export default function ChatbotPage() {
 
       <div className="relative flex flex-1 flex-col pt-28 pb-8 sm:pt-36">
         <div className="shell mb-6">
+          <Link
+            to="/"
+            className="label-mono mb-4 inline-flex items-center gap-2 text-paper/40 transition-colors hover:text-paper"
+          >
+            ← Back to portfolio
+          </Link>
           <p className="label-mono mb-2 text-accent">AI Assistant</p>
           <h1 className="font-display text-3xl font-bold tracking-tight text-paper sm:text-4xl">
             Ask me about Muhammad Umair
