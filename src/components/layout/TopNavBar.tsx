@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router'
 import { CloseIcon, MenuIcon } from '../ui/icons'
 
 const links = [
@@ -7,6 +8,11 @@ const links = [
   { href: '#skills', label: 'Skills' },
   { href: '#about', label: 'About' },
   { href: '#contact', label: 'Contact' },
+]
+
+const routeLinks = [
+  { to: '/chatbot', label: 'Chatbot' },
+  { to: '/contact', label: 'Get in touch' },
 ]
 
 export default function TopNavBar() {
@@ -62,6 +68,15 @@ export default function TopNavBar() {
                 {link.label}
               </a>
             ))}
+            {routeLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="text-sm text-soft transition-colors hover:text-ink"
+              >
+                {link.label}
+              </Link>
+            ))}
             <a href="#contact" className="btn-solid px-5 py-2 text-sm">
               Say hello
             </a>
@@ -100,6 +115,16 @@ export default function TopNavBar() {
             >
               {link.label}
             </a>
+          ))}
+          {routeLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              onClick={() => setMenuOpen(false)}
+              className="border-b border-line py-4 font-display text-xl font-semibold"
+            >
+              {link.label}
+            </Link>
           ))}
           <a
             href="#contact"

@@ -1,4 +1,5 @@
 import { useRef, useState, type CSSProperties } from 'react'
+import { Link } from 'react-router'
 import Reveal from '../ui/Reveal'
 import ChapterKicker from '../ui/ChapterKicker'
 import MaskWords from '../ui/MaskWords'
@@ -78,6 +79,10 @@ export default function ContactSection() {
               <DownloadIcon className="h-4 w-4" />
               Résumé
             </a>
+            <Link to="/contact" className="btn-light">
+              Full contact page
+              <ArrowUpRightIcon className="h-4 w-4" />
+            </Link>
           </div>
         </Reveal>
         <Reveal delay={340}>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { GitHubIcon, LinkedInIcon, MailIcon } from '../ui/icons'
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from '../sections/contact-info'
 
@@ -32,6 +33,12 @@ export default function Footer() {
           >
             <LinkedInIcon className="h-5 w-5" />
           </a>
+          <Link to="/chatbot" className="label-mono text-muted transition-colors hover:text-ink">
+            Chatbot
+          </Link>
+          <Link to="/contact" className="label-mono text-muted transition-colors hover:text-ink">
+            Contact
+          </Link>
           <a href="#top" className="label-mono text-muted transition-colors hover:text-ink">
             Back to top ↑
           </a>

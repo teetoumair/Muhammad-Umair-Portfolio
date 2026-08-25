@@ -1,29 +1,21 @@
-import TopNavBar from './components/layout/TopNavBar'
-import Footer from './components/layout/Footer'
-import ScrollProgress from './components/ui/ScrollProgress'
-import HeroSection from './components/sections/HeroSection'
-import LiveWorkSection from './components/sections/LiveWorkSection'
-import ProjectsSection from './components/sections/ProjectsSection'
-import SkillsSection from './components/sections/SkillsSection'
-import AboutSection from './components/sections/AboutSection'
-import ContactSection from './components/sections/ContactSection'
+import { Routes, Route } from 'react-router'
+import PageLayout from './components/layout/PageLayout'
+import HomePage from './components/pages/HomePage'
+import ChatbotPage from './components/pages/ChatbotPage'
+import ContactPage from './components/pages/ContactPage'
 import JsonLd from './components/seo/JsonLd'
 
 export default function App() {
   return (
     <>
       <JsonLd />
-      <ScrollProgress />
-      <TopNavBar />
-      <main>
-        <HeroSection />
-        <LiveWorkSection />
-        <ProjectsSection />
-        <SkillsSection />
-        <AboutSection />
-        <ContactSection />
-      </main>
-      <Footer />
+      <Routes>
+        <Route element={<PageLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="chatbot" element={<ChatbotPage />} />
+          <Route path="contact" element={<ContactPage />} />
+        </Route>
+      </Routes>
     </>
   )
 }
